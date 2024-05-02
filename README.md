@@ -1,5 +1,5 @@
 # Serializable Dart Enums
-[![Dart](https://github.com/simphotonics/benchmark_runner/actions/workflows/dart.yml/badge.svg)](https://github.com/simphotonics/benchmark_runner/actions/workflows/dart.yml)
+[![Dart](https://github.com/simphotonics/serializable_enum/actions/workflows/dart.yml/badge.svg)](https://github.com/simphotonics/serializable_enum/actions/workflows/dart.yml)
 
 
 ## Introduction

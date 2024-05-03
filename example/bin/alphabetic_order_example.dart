@@ -1,4 +1,4 @@
-import 'package:serializable_enum/serializable_enum.dart';
+import 'package:serialize_enum/serialize_enum.dart';
 
 enum AlphabeticOrder with SerializeByName<AlphabeticOrder> {
   asc,

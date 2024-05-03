@@ -1,4 +1,4 @@
-import 'package:serializable_enum/src/extension/key.dart';
+import 'package:serialize_enum/src/extension/key.dart';
 import 'package:test/test.dart';
 
 void main() {

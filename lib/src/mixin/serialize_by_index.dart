@@ -13,7 +13,7 @@ mixin SerializeByIndex<T extends Enum> on Enum {
   /// ---
   /// Example:
   /// ```
-  /// import 'serializable_enum.dart';
+  /// import 'package:serialize_enum/serialize_enum.dart';
   ///
   /// enum AlphabeticOrder with SerializeByIndex<AlphabeticOrder>{
   ///   asc, desc;
@@ -27,8 +27,43 @@ mixin SerializeByIndex<T extends Enum> on Enum {
   static E fromJson<E extends Enum>({
     required Map<String, dynamic> json,
     required List<E> values,
+  }) =>
+      fromJsonCustomKey(
+        json: json,
+        values: values,
+        key: E.key,
+      );
+
+  /// Converts a json map using a custom
+  /// enum instance `E`.
+  /// ---
+  /// Example:
+  /// ```
+  /// import 'package:serialize_enum/serialize_enum.dart';
+  ///
+  /// enum AlphabeticOrder implements SerializeByIndex<AlphabeticOrder>{
+  ///   asc, desc;
+  ///
+  ///   const key = 'myCustomKey';
+  ///
+  ///   @override
+  ///   Map<String, dynamic> toJson() => {key: index};
+  ///
+  ///   /// Reads a json map and returns the corresponding
+  ///   /// instance of `AlphabeticOrder`.
+  ///   factory AlphabeticOrder.fromJson(Map<String, dynamic> json) =>
+  ///   SerializeByIndex.fromJsonCustomKey(
+  ///     json: json,
+  ///     values: values,
+  ///     key: key,
+  ///   );
+  /// }
+  /// ```
+  static E fromJsonCustomKey<E extends Enum>({
+    required Map<String, dynamic> json,
+    required List<E> values,
+    required String key,
   }) {
-    final key = E.key;
     if (json.containsKey(key) &&
         json[key] is int &&
         json[key] < values.length &&

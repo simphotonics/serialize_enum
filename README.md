@@ -1,5 +1,5 @@
-# Serializable Dart Enums
-[![Dart](https://github.com/simphotonics/serializable_enum/actions/workflows/dart.yml/badge.svg)](https://github.com/simphotonics/serializable_enum/actions/workflows/dart.yml)
+# Serialize Dart Enums - Without Source Code Generation
+[![Dart](https://github.com/simphotonics/serialize_enum/actions/workflows/dart.yml/badge.svg)](https://github.com/simphotonics/serialize_enum/actions/workflows/dart.yml)
 
 
 ## Introduction
@@ -12,31 +12,35 @@ storing the resulting Sting in a file or database.
 
 To revive the object, the stored string is retrieved,
 converted back into a `Map<String, dynamic>` using the function
-[`jsonDecode`][jsonDecode], and a clone of the original object is generated a factory constructor usually named `.fromJson(Map<String, dynamic> json)`.
+[`jsonDecode`][jsonDecode], and a clone of the original object is created using
+ a factory constructor usually named `.fromJson`.
 
-
+## Motivation
 Writing the method `toJson()` and the factory constructor `.fromJson`
-for a large number of data classes can be tedious and error prone and this task is often acomplished by annotating
+for a *large* number of data classes can be tedious and error prone
+and this task is often acomplished by annotating the
 data classes and building the source code using packages like:
 [`json_serializable`][json_serializable].
 
-The package [`serializable_enum][serializable_enum] provides mixins and interfaces to serialize Dart enums without recourse to
-source generation.
-
+For small projects, however, source code generation might add too much
+complexity. Dart enumerations often represent settings or options
+that need to be persisted after exiting an app or program.
+The package [`serialize_enum`][serialize_enum]
+provides mixins to serialize Dart enums without recourse to
+source generation. All that is needed is a `with` statement when declaring the
+enum and defining a `factory` constructor that calls a static method provided by
+the mixin.
 
 ## Usage
 
-Include [`serializable_enum`][serializable_enum] as a `dev_dependency`
+Include [`serialize_enum`][serialize_enum] as a `dev_dependency`
 in your `pubspec.yaml` file.
 
-The example below shows the enum `AlphabeticOrder`. The generic mixin [SerializeByName][SerializeByName] provides the method `toJson`
-and the static method `SerializeByName.fromJson`
-that is called by the enum factory constructor.
-
-Note: The generic type parameter must be specified since it is used to infer the json map *key* used to store the enum *name*.
+The example below shows the enum `AlphabeticOrder`. The generic mixin [SerializeByName][SerializeByName] provides the method `toJson`. The enum factory constructor
+calls the static method `SerializeByName.fromJson` provided by the mixin:
 
 ```Dart
-import 'package:serializable_enum/serializable_enum.dart';
+import 'package:serialize_enum/serialize_enum.dart';
 
 enum AlphabeticOrder with SerializeByName<AlphabeticOrder> {
   asc,
@@ -47,7 +51,14 @@ enum AlphabeticOrder with SerializeByName<AlphabeticOrder> {
   factory AlphabeticOrder.fromJson(Map<String, dynamic> json) =>
       SerializeByName.fromJson(json: json, values: values);
 }
+```
 
+Note: The generic type parameter of [SerializeByName][SerializeByName]
+must be specified. It is used to generate the json map
+*key* under which the enum *name* is stored.
+
+```Dart
+// Code shown above goes here ...
 void main() {
   const order = AlphabeticOrder.asc;
 
@@ -58,7 +69,7 @@ void main() {
   print(AlphabeticOrder.fromJson(order.toJson()));
 }
 ```
-Running the program above produces the following console output:
+Running the program produces the following console output:
 ```Console
 $ dart alphabetic_order_example.dart
 Json map:
@@ -71,38 +82,39 @@ AlphabeticOrder.asc
 ## Further Serialization Options
 
 To serialize the enum instance by storing its *index* instead of its *name*
-one can use the mixin [`SerializeByIndex`][SerializeByIndex].
+use the mixin [`SerializeByIndex`][SerializeByIndex].
 
-The interface [`SerializableByName`][`SerializableByName] can be implemented
-to serialize an enum by *name* and specify a custom *key*. Note that the
-constant *key* must be used in the method `toJson` and passed as parameter to the function `SerializableByName.fromJson`.
+In order to use a *custom* key when serializing an enumeration, [`SerializeByIndex`][SerializeByIndex] or [`SerializeByName`][SerializeByName] may be implemented:
+
 ```Dart
 
-import 'package:serializable_enum/serializable_enum.dart';
+import 'package:serialize_enum/serialize_enum.dart';
 
 enum AlphabeticOrder implements SerializableByName {
   asc,
   desc;
 
-  static const key = 'alphabeticOrder';
+  /// Key used to serialize the enum.
+  static const key = 'customKey';
 
   @override
   Map<String, dynamic> toJson() => {key: name};
 
-  /// Reads a json map and returns the corresponding
   /// instance of `AlphabeticOrder`.
   factory AlphabeticOrder.fromJson(Map<String, dynamic> json) =>
-      SerializableByName.fromJson(json: json, values: values, key: key);
+      SerializableByNameCustomKey.fromJson(
+        json: json,
+        values: values,
+        key: key,
+      );
 }
 ```
-
-
 
 ## Features and bugs
 
 Please file feature requests and bugs at the [issue tracker][tracker].
 
-[tracker]: https://github.com/simphotonics/serializable_enum/issues
+[tracker]: https://github.com/simphotonics/serialize_enum/issues
 
 [jsonEncode]: https://api.dart.dev/dart-convert/jsonEncode.html
 
@@ -110,12 +122,12 @@ Please file feature requests and bugs at the [issue tracker][tracker].
 
 [json_serializable]: https://pub.dev/packages/json_serializable
 
-[serializable_enum]: https://pub.dev/packages/serializable_enum
+[serialize_enum]: https://pub.dev/packages/serialize_enum
 
-[SerializableByIndex]: https://pub.dev/documentation/serializable_enum/latest/serializable_enum/SerializableByIndex-class.html
+[SerializableByIndex]: https://pub.dev/documentation/serialize_enum/latest/serialize_enum/SerializableByIndex-class.html
 
-[SerializableByName]: https://pub.dev/documentation/serializable_enum/latest/serializable_enum/SerializableByName-class.html
+[SerializableByName]: https://pub.dev/documentation/serialize_enum/latest/serialize_enum/SerializableByName-class.html
 
-[SerializeByIndex]: https://pub.dev/documentation/serializable_enum/latest/serializable_enum/SerializeByIndex-mixin.html
+[SerializeByIndex]: https://pub.dev/documentation/serialize_enum/latest/serialize_enum/SerializeByIndex-mixin.html
 
-[SerializeByName]: https://pub.dev/documentation/serializable_enum/latest/serializable_enum/SerializeByName-mixin.html
+[SerializeByName]: https://pub.dev/documentation/serialize_enum/latest/serialize_enum/SerializeByName-mixin.html

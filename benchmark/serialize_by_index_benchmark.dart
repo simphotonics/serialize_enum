@@ -1,7 +1,7 @@
 // ignore_for_file: unused_local_variable
 
 import 'package:benchmark_runner/benchmark_runner.dart';
-import 'package:serializable_enum/serializable_enum.dart';
+import 'package:serialize_enum/serialize_enum.dart';
 
 enum AlphabeticOrder with SerializeByIndex<AlphabeticOrder> {
   asc,

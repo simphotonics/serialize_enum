@@ -1,29 +1,28 @@
 // ignore_for_file: unused_local_variable
-
-import 'package:serializable_enum/serializable_enum.dart';
+import 'package:serialize_enum/serialize_enum.dart';
 import 'package:test/test.dart';
 
-enum AlphabeticOrder implements SerializableByName {
+enum AlphabeticOrder implements SerializeByIndex {
   asc,
   desc;
 
-  static const key = 'alphabeticOrder';
+  static const key = 'customKey';
 
   @override
-  Map<String, dynamic> toJson() => {key: name};
+  Map<String, dynamic> toJson() => {key: index};
 
   /// Reads a json map and returns the corresponding
   /// instance of `AlphabeticOrder`.
   factory AlphabeticOrder.fromJson(Map<String, dynamic> json) =>
-      SerializableByName.fromJson(json: json, values: values, key: key);
+      SerializeByIndex.fromJsonCustomKey(json: json, values: values, key: key);
 }
 
 void main() {
   group('AlphabeticOrder with interface:', () {
-    test('serialize by name', () {
-      expect(AlphabeticOrder.desc.toJson(), {'alphabeticOrder': 'desc'});
+    test('serialize by index', () {
+      expect(AlphabeticOrder.desc.toJson(), {AlphabeticOrder.key: 1});
     });
-    test('deserialize by name', () {
+    test('deserialize by index', () {
       final json = AlphabeticOrder.asc.toJson();
       expect(AlphabeticOrder.fromJson(json), AlphabeticOrder.asc);
     });

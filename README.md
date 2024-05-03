@@ -1,4 +1,4 @@
-# Serialize Dart Enums Without Source Code Generation
+# Serialize Dart Enums without Source Code Generation
 [![Dart](https://github.com/simphotonics/serialize_enum/actions/workflows/dart.yml/badge.svg)](https://github.com/simphotonics/serialize_enum/actions/workflows/dart.yml)
 
 
@@ -111,12 +111,15 @@ enum AlphabeticOrder implements SerializableByName {
       );
 }
 ```
+For benchmark scores see folder [`benchmark`][benchmark].
 
 ## Features and bugs
 
 Please file feature requests and bugs at the [issue tracker][tracker].
 
 [tracker]: https://github.com/simphotonics/serialize_enum/issues
+
+[benchmark]: https://github.com/simphotonics/serialize_enum/tree/main/benchmark
 
 [jsonEncode]: https://api.dart.dev/dart-convert/jsonEncode.html
 

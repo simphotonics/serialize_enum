@@ -1,15 +1,21 @@
 name: serialize_enum
 
-description: Runtime json serialization for Dart enumerations.
+description: Json serialization for Dart enumerations
+   without source code generation.
 
 version: 0.1.0
 
 repository: https://github.com/simphotonics/serialize_enum
 
+topics:
+  - enum
+  - json
+  - serialization
+  - persist
+
 environment:
   sdk: ^3.3.4
 
-# Add regular dependencies here.
 dependencies:
   exception_templates: ^0.3.1
   lazy_memo: ^0.2.3

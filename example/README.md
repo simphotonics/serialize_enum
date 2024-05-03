@@ -1,4 +1,4 @@
-# Serialize Dart Enumerations
+# Serialize Dart Enumerations  - Example
 [![Dart](https://github.com/simphotonics/serialize_enum/actions/workflows/dart.yml/badge.svg)](https://github.com/simphotonics/serialize_enum/actions/workflows/dart.yml)
 
 

@@ -1,6 +1,6 @@
 import 'package:exception_templates/exception_templates.dart';
 
-import '../extension/key.dart';
+import '../extension/json_key.dart';
 
 /// Provides the methods [toJson] and [fromJson].
 mixin SerializeByIndex<T extends Enum> on Enum {

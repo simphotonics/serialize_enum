@@ -1,4 +1,4 @@
-import 'package:serialize_enum/src/extension/key.dart';
+import 'package:serialize_enum/src/extension/json_key.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -21,8 +21,8 @@ void main() {
   group('memo:', () {
     test('int', () {
       final key = (num).key;
-      expect(Key.memo.functionTable, contains((num)));
-      expect(Key.memo.functionTable, containsValue(key));
+      expect(JsonKey.memo.functionTable, contains((num)));
+      expect(JsonKey.memo.functionTable, containsValue(key));
     });
   });
 }

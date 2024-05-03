@@ -1,7 +1,7 @@
 import 'package:lazy_memo/lazy_memo.dart';
 
 /// Provides the getter [key].
-extension Key on Type {
+extension JsonKey on Type {
   /// The key used to serialize an object of type `this`.
   String get slowKey {
     final string = toString();

@@ -109,7 +109,8 @@ Running: dart --define=isBenchmarkProcess=true benchmark/serialize_by_name_bench
                  mean: 0.48 ± 0.25 us, median: 0.41 ± 0.031 us
                  ▉▁▂___________  85  _____ sample size: 100 (averaged over 235 runs)
 
-  [212ms:089us] AlphabeticOrder with mixin: deserialize by name; mean: 0.43 ± 0.28 us, median: 0.40 ± 0.0020 us
+  [212ms:089us] AlphabeticOrder with mixin: deserialize by name;
+                 mean: 0.43 ± 0.28 us, median: 0.40 ± 0.0020 us
                  ▂▇▇▉_█▃_________  3186  _____ sample size: 100 (averaged over 214 runs)
 
 

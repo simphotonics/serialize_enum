@@ -26,8 +26,8 @@ For small projects, however, source code generation might add too much
 complexity. Dart enumerations often represent settings or options
 that need to be persisted after exiting an app or program.
 The package [`serialize_enum`][serialize_enum]
-provides mixins to serialize Dart enums without recourse to
-source generation. All that is needed is a `with` statement when declaring the
+provides mixins to serialize Dart enums without source code
+generation. All that is needed is a `with` statement when declaring the
 enum and defining a `factory` constructor that calls a static method provided by
 the mixin.
 
@@ -36,7 +36,9 @@ the mixin.
 Include [`serialize_enum`][serialize_enum] as a `dev_dependency`
 in your `pubspec.yaml` file.
 
-The example below shows the enum `AlphabeticOrder`. The generic mixin [SerializeByName][SerializeByName] provides the method `toJson`. The enum factory constructor
+The example below shows the enum `AlphabeticOrder`. The generic mixin
+[SerializeByName][SerializeByName] provides the method `toJson`.
+The enum factory constructor
 calls the static method `SerializeByName.fromJson` provided by the mixin:
 
 ```Dart

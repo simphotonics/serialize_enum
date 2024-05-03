@@ -1,4 +1,4 @@
-# Serialize Dart Enums - Without Source Code Generation
+# Serialize Dart Enums Without Source Code Generation
 [![Dart](https://github.com/simphotonics/serialize_enum/actions/workflows/dart.yml/badge.svg)](https://github.com/simphotonics/serialize_enum/actions/workflows/dart.yml)
 
 

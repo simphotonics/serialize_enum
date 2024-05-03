@@ -22,7 +22,7 @@ final order = AlphabeticOrder.desc;
 final json = order.toJson();
 
 void main(List<String> args) {
-  group('AlphabeticOrder with interface:', () {
+  group('AlphabeticOrder with custom key:', () {
     benchmark('serialize by index', () {
       final json = order.toJson();
     });

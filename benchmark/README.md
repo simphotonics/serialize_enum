@@ -146,6 +146,7 @@ Total run time: [02s:129ms]
 Completed benchmarks: 8.
 Completed successfully.
 Exiting with code: 0.
+```
 
 ## Conclusion
 

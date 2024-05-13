@@ -83,6 +83,9 @@ enum AlphabeticOrder implements SerializeByIndex {
 
 Running the benchmarks produced the following console output:
 ```python
+$ dart run benchmark_runner
+Building package executable...
+Built benchmark_runner:benchmark_runner.
 
 Finding benchmark files...
   benchmark/serialize_by_name_benchmark.dart
@@ -92,58 +95,57 @@ Finding benchmark files...
 
 Progress timer: [01s:000ms]
 
-Running: dart --define=isBenchmarkProcess=true benchmark/serialize_by_name_custom_key_benchmark.dart
-  [216ms:302us] AlphabeticOrder with custom key: serialize by name;
-                 mean: 0.48 ± 0.69 us, median: 0.37 ± 0.032 us
-                 ▉▁_▂__________  448  _____ sample size: 100 (averaged over 206 runs)
+$ dart benchmark/serialize_by_name_custom_key_benchmark.dart
+  [224ms:247us] AlphabeticOrder with custom key: serialize by name
+    mean: 1.60 ± 7.59 us, median: 0.38 ± 0.038 us
+    __▉▂▄▁__________  3972  _____ sample size: 100 (averaged over 248 runs)
 
-  [215ms:061us] AlphabeticOrder with custom key: deserialize by name;
-                mean: 1.21 ± 5.12 us, median: 0.34 ± 0.0030 us
-                 _______▉▉▅▂▂_________  34813  _____ sample size: 100 (averaged over 205 runs)
-
-
-
-
-Running: dart --define=isBenchmarkProcess=true benchmark/serialize_by_name_benchmark.dart
-  [219ms:585us] AlphabeticOrder with mixin: serialize by name;
-                 mean: 0.48 ± 0.25 us, median: 0.41 ± 0.031 us
-                 ▉▁▂___________  85  _____ sample size: 100 (averaged over 235 runs)
-
-  [212ms:089us] AlphabeticOrder with mixin: deserialize by name;
-                 mean: 0.43 ± 0.28 us, median: 0.40 ± 0.0020 us
-                 ▂▇▇▉_█▃_________  3186  _____ sample size: 100 (averaged over 214 runs)
+  [232ms:375us] AlphabeticOrder with custom key: deserialize by name
+    mean: 3.60 ± 23.30 us, median: 0.35 ± 0.065 us
+    _▄▉▂▉▄▁_________  6930  _____ sample size: 100 (averaged over 287 runs)
 
 
 
 
-Running: dart --define=isBenchmarkProcess=true benchmark/serialize_by_index_benchmark.dart
-  [218ms:215us] AlphabeticOrder with mixin: serialize by index;
-                 mean: 0.44 ± 0.12 us, median: 0.41 ± 0.031 us
-                 ▉_▁▂__________  61  _____ sample size: 100 (averaged over 222 runs)
+$ dart benchmark/serialize_by_name_benchmark.dart
+  [225ms:140us] AlphabeticOrder with mixin: serialize by name
+    mean: 0.94 ± 3.026 us, median: 0.47 ± 0.092 us
+    ▁▄▉▆▅▂__________  701  _____ sample size: 100 (averaged over 222 runs)
 
-  [211ms:567us] AlphabeticOrder with mixin: deserialize by index;
-                 mean: 0.49 ± 0.19 us, median: 0.47 ± 0.40 us
-                 ▆▅▉▁ sample size: 100 (averaged over 207 runs)
-
-
+  [223ms:086us] AlphabeticOrder with mixin: deserialize by name
+    mean: 0.82 ± 3.0057 us, median: 0.41 ± 0.087 us
+    ___▉_____________  783  _____ sample size: 100 (averaged over 284 runs)
 
 
-Running: dart --define=isBenchmarkProcess=true benchmark/serialize_by_index_custom_key_benchmark.dart
-  [214ms:866us] AlphabeticOrder with custom key: serialize by index;
-                mean: 0.39 ± 0.14 us, median: 0.36 ± 0.034 us
-                 ▉_▂________________ sample size: 100 (averaged over 215 runs)
 
-  [209ms:815us] AlphabeticOrder with custom key: deserialize by index;
-                 mean: 0.27 ± 0.17 us, median: 0.16 ± 0.32 us
-                 ▉_▁▂_ sample size: 100 (averaged over 319 runs)
+
+$ dart benchmark/serialize_by_index_custom_key_benchmark.dart
+  [232ms:062us] AlphabeticOrder with custom key: serialize by index
+    mean: 0.73 ± 1.86 us, median: 0.34 ± 0.067 us
+    _▄▉▄▂▁_________  506  _____ sample size: 100 (averaged over 456 runs)
+
+  [215ms:197us] AlphabeticOrder with custom key: deserialize by index
+    mean: 0.50 ± 0.24 us, median: 0.48 ± 0.11 us
+    __▉▂▆▄__________  31  _____ sample size: 100 (averaged over 194 runs)
+
+
+Progress timer: [01s:500ms]
+
+$ dart benchmark/serialize_by_index_benchmark.dart
+  [257ms:302us] AlphabeticOrder with mixin: serialize by index
+    mean: 3.085 ± 15.16 us, median: 0.48 ± 0.051 us
+    __▄▆▉▆▃__________  5994  _____ sample size: 100 (averaged over 383 runs)
+
+  [215ms:144us] AlphabeticOrder with mixin: deserialize by index
+    mean: 0.35 ± 0.076 us, median: 0.33 ± 0.054 us
+    ▄▉▉▃▁_▂▁_______________ sample size: 100 (averaged over 322 runs)
 
 
 -------      Summary     --------
-Total run time: [01s:757ms]
+Total run time: [02s:129ms]
 Completed benchmarks: 8.
 Completed successfully.
 Exiting with code: 0.
-```
 
 ## Conclusion
 

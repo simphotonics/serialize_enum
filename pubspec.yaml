@@ -1,7 +1,6 @@
 name: serialize_enum
 
-description: Json serialization for Dart enumerations
-   without source code generation.
+description: Json serialization for Dart enumerations without source code generation.
 
 version: 0.1.0
 
@@ -21,6 +20,6 @@ dependencies:
   lazy_memo: ^0.2.3
 
 dev_dependencies:
-  benchmark_runner: ^0.1.6
+  benchmark_runner: ^0.1.7
   lints: ^3.0.0
   test: ^1.25.4

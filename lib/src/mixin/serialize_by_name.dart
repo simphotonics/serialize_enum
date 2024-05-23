@@ -1,12 +1,14 @@
 import 'package:exception_templates/exception_templates.dart';
 
 import '../extension/json_key.dart';
+import '../interface/serializable.dart';
 
 /// Provides the methods [toJson] and [fromJson].
-mixin SerializeByName<T extends Enum> on Enum {
+mixin SerializeByName<T extends Enum> on Enum implements Serializable {
   /// Returns a json map representing the enum instance.
   /// The value used is the enum *name*.
-  Map<String, dynamic> toJson() => {T.key: name};
+  @override
+  Json toJson() => {T.key: name};
 
   /// Converts a json map to the corresponding
   /// enum instance `E`.
@@ -25,7 +27,7 @@ mixin SerializeByName<T extends Enum> on Enum {
   /// }
   /// ```
   static E fromJson<E extends Enum>({
-    required Map<String, dynamic> json,
+    required Json json,
     required List<E> values,
   }) =>
       fromJsonCustomKey(
@@ -60,7 +62,7 @@ mixin SerializeByName<T extends Enum> on Enum {
   /// }
   /// ```
   static E fromJsonCustomKey<E extends Enum>({
-    required Map<String, dynamic> json,
+    required Json json,
     required List<E> values,
     required String key,
   }) {

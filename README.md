@@ -5,14 +5,15 @@
 ## Introduction
 
 Persisting objects in Dart and Flutter typically consists in
-transforming the object into a `Map<String, Object?>` using a
-method called `toJson()`, converting the map into a `String`
+transforming the object into a map of type `Map<String, Object?>`
+using a method called `toJson()`, converting the map into a `String`
 using the function [`jsonEncode`][jsonEncode], and
 storing the resulting Sting in a file or database.
 
 To revive the object, the stored string is retrieved,
-converted back into a `Map<String, Object?>` using the function
-[`jsonDecode`][jsonDecode], and a clone of the original object is created using
+converted back into an object of type `Map<String, Object?>` using the function
+[`jsonDecode`][jsonDecode], and then a
+clone of the original object is created using
  a factory constructor usually named `.fromJson`.
 
 ## Motivation
@@ -38,6 +39,7 @@ in your `pubspec.yaml` file.
 
 The example below shows the enum `AlphabeticOrder`. The generic mixin
 [SerializeByName][SerializeByName] provides the method `toJson`.
+The typedef `Json` represents the type `Map<String, Object?>`.
 The enum factory constructor
 calls the static method `SerializeByName.fromJson` provided by the mixin:
 
@@ -50,14 +52,16 @@ enum AlphabeticOrder with SerializeByName<AlphabeticOrder> {
 
   /// Reads a json map and returns the corresponding
   /// instance of `AlphabeticOrder`.
-  factory AlphabeticOrder.fromJson(Map<String, Object?> json) =>
+  factory AlphabeticOrder.fromJson(Json json) =>
       SerializeByName.fromJson(json: json, values: values);
 }
 ```
 
-Note: The generic type parameter of [SerializeByName][SerializeByName]
+Notes: The generic type parameter of [SerializeByName][SerializeByName]
 must be specified. It is used to generate the json map
 *key* under which the enum *name* is stored.
+
+
 
 ```Dart
 // Code shown above goes here ...
@@ -100,10 +104,10 @@ enum AlphabeticOrder implements SerializableByName {
   static const key = 'customKey';
 
   @override
-  Map<String, Object?> toJson() => {key: name};
+  Json toJson() => {key: name};
 
   /// instance of `AlphabeticOrder`.
-  factory AlphabeticOrder.fromJson(Map<String, Object?> json) =>
+  factory AlphabeticOrder.fromJson(Json json) =>
       SerializableByNameCustomKey.fromJson(
         json: json,
         values: values,

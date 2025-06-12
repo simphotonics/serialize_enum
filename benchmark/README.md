@@ -17,7 +17,7 @@ enum AlphabeticOrder with SerializeByName<AlphabeticOrder> {
 
   /// Reads a json map and returns the corresponding
   /// instance of `AlphabeticOrder`.
-  factory AlphabeticOrder.fromJson(Map<String, Object?> json) =>
+  factory AlphabeticOrder.fromJson(Json json) =>
       SerializeByName.fromJson(json: json, values: values);
 }
 ```
@@ -32,11 +32,11 @@ enum AlphabeticOrder implements SerializeByName {
   static const key = 'alphabeticOrder';
 
   @override
-  Map<String, Object?> toJson() => {key: name};
+  Json toJson() => {key: name};
 
   /// Reads a json map and returns the corresponding
   /// instance of `AlphabeticOrder`.
-  factory AlphabeticOrder.fromJson(Map<String, Object?> json) =>
+  factory AlphabeticOrder.fromJson(Json json) =>
       SerializeByName.fromJsonCustomKey(json: json, values: values, key: key);
 }
 ```
@@ -51,7 +51,7 @@ enum AlphabeticOrder with SerializeByIndex<AlphabeticOrder> {
 
   /// Reads a json map and returns the corresponding
   /// instance of `AlphabeticOrder`.
-  factory AlphabeticOrder.fromJson(Map<String, Object?> json) =>
+  factory AlphabeticOrder.fromJson(Json json) =>
       SerializeByIndex.fromJson(json: json, values: values);
 }
 ```
@@ -69,11 +69,11 @@ enum AlphabeticOrder implements SerializeByIndex {
   static const key = 'alphabeticOrder';
 
   @override
-  Map<String, Object?> toJson() => {key: index};
+  Json toJson() => {key: index};
 
   /// Reads a json map and returns the corresponding
   /// instance of `AlphabeticOrder`.
-  factory AlphabeticOrder.fromJson(Map<String, Object?> json) =>
+  factory AlphabeticOrder.fromJson(Json json) =>
       SerializeByIndex.fromJsonCustomKey(json: json, values: values, key: key);
 }
 ```

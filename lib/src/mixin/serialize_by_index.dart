@@ -29,12 +29,7 @@ mixin SerializeByIndex<T extends Enum> on Enum implements Serializable {
   static E fromJson<E extends Enum>({
     required Json json,
     required List<E> values,
-  }) =>
-      fromJsonCustomKey(
-        json: json,
-        values: values,
-        key: E.key,
-      );
+  }) => fromJsonCustomKey(json: json, values: values, key: E.key);
 
   /// Converts a json map using a custom
   /// enum instance `E`.
@@ -49,7 +44,7 @@ mixin SerializeByIndex<T extends Enum> on Enum implements Serializable {
   ///   const key = 'myCustomKey';
   ///
   ///   @override
-  ///   Map<String, Object?> toJson() => {key: index};
+  ///   Json toJson() => {key: index};
   ///
   ///   /// Reads a json map and returns the corresponding
   ///   /// instance of `AlphabeticOrder`.
@@ -71,10 +66,12 @@ mixin SerializeByIndex<T extends Enum> on Enum implements Serializable {
         return values[index];
       default:
         throw ExceptionOf<E>(
-            message: 'Json validation error',
-            expectedState: '{$key: a valid index '
-                'between 0 and ${values.length - 1}}',
-            invalidState: '$json');
+          message: 'Json validation error',
+          expectedState:
+              '{$key: a valid index '
+              'between 0 and ${values.length - 1}}',
+          invalidState: '$json',
+        );
     }
   }
 }

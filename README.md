@@ -5,13 +5,13 @@
 ## Introduction
 
 Persisting objects in Dart and Flutter typically consists in
-transforming the object into a `Map<String, dynamic>` using a
+transforming the object into a `Map<String, Object?>` using a
 method called `toJson()`, converting the map into a `String`
 using the function [`jsonEncode`][jsonEncode], and
 storing the resulting Sting in a file or database.
 
 To revive the object, the stored string is retrieved,
-converted back into a `Map<String, dynamic>` using the function
+converted back into a `Map<String, Object?>` using the function
 [`jsonDecode`][jsonDecode], and a clone of the original object is created using
  a factory constructor usually named `.fromJson`.
 
@@ -50,7 +50,7 @@ enum AlphabeticOrder with SerializeByName<AlphabeticOrder> {
 
   /// Reads a json map and returns the corresponding
   /// instance of `AlphabeticOrder`.
-  factory AlphabeticOrder.fromJson(Map<String, dynamic> json) =>
+  factory AlphabeticOrder.fromJson(Map<String, Object?> json) =>
       SerializeByName.fromJson(json: json, values: values);
 }
 ```
@@ -100,10 +100,10 @@ enum AlphabeticOrder implements SerializableByName {
   static const key = 'customKey';
 
   @override
-  Map<String, dynamic> toJson() => {key: name};
+  Map<String, Object?> toJson() => {key: name};
 
   /// instance of `AlphabeticOrder`.
-  factory AlphabeticOrder.fromJson(Map<String, dynamic> json) =>
+  factory AlphabeticOrder.fromJson(Map<String, Object?> json) =>
       SerializableByNameCustomKey.fromJson(
         json: json,
         values: values,

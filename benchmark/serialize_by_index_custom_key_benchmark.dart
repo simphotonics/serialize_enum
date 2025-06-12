@@ -10,11 +10,11 @@ enum AlphabeticOrder implements SerializeByIndex {
   static const key = 'alphabeticOrder';
 
   @override
-  Map<String, dynamic> toJson() => {key: index};
+  Json toJson() => {key: index};
 
   /// Reads a json map and returns the corresponding
   /// instance of `AlphabeticOrder`.
-  factory AlphabeticOrder.fromJson(Map<String, dynamic> json) =>
+  factory AlphabeticOrder.fromJson(Json json) =>
       SerializeByIndex.fromJsonCustomKey(json: json, values: values, key: key);
 }
 

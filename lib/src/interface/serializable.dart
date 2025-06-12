@@ -1,5 +1,5 @@
-/// Represents the type Map<String, dynamic>
-typedef Json = Map<String, dynamic>;
+/// Represents the type `Map<String, Object>`.
+typedef Json = Map<String, Object?>;
 
 /// Implemented by a serializable class with a [toJson] method.
 abstract interface class Serializable {

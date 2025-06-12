@@ -22,7 +22,7 @@ mixin SerializeByName<T extends Enum> on Enum implements Serializable {
   ///
   ///   /// Reads a json map and returns the corresponding
   ///   /// instance of `AlphabeticOrder`.
-  ///   factory AlphabeticOrder.fromJson(Map<String, dynamic> json) =>
+  ///   factory AlphabeticOrder.fromJson(Json json) =>
   ///   SerializableEnumMixin.fromJson(json: json, values: values);
   /// }
   /// ```
@@ -49,11 +49,11 @@ mixin SerializeByName<T extends Enum> on Enum implements Serializable {
   ///   const key = 'myCustomKey';
   ///
   ///   @override
-  ///   Map<String, dynamic> toJson() => {key: name};
+  ///   Json toJson() => {key: name};
   ///
   ///   /// Reads a json map and returns the corresponding
   ///   /// instance of `AlphabeticOrder`.
-  ///   factory AlphabeticOrder.fromJson(Map<String, dynamic> json) =>
+  ///   factory AlphabeticOrder.fromJson(Json json) =>
   ///   SerializeByName.fromJsonCustomKey(
   ///     json: json,
   ///     values: values,

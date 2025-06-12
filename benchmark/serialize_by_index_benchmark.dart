@@ -9,7 +9,7 @@ enum AlphabeticOrder with SerializeByIndex<AlphabeticOrder> {
 
   /// Reads a json map and returns the corresponding
   /// instance of `AlphabeticOrder`.
-  factory AlphabeticOrder.fromJson(Map<String, dynamic> json) =>
+  factory AlphabeticOrder.fromJson(Json json) =>
       SerializeByIndex.fromJson(json: json, values: values);
 }
 

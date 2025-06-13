@@ -29,12 +29,7 @@ mixin SerializeByName<T extends Enum> on Enum implements Serializable {
   static E fromJson<E extends Enum>({
     required Json json,
     required List<E> values,
-  }) =>
-      fromJsonCustomKey(
-        json: json,
-        values: values,
-        key: E.key,
-      );
+  }) => fromJsonCustomKey(json: json, values: values, key: E.key);
 
   /// Converts a json map using a custom *key* to the corresponding
   /// enum instance `E`.
@@ -71,9 +66,10 @@ mixin SerializeByName<T extends Enum> on Enum implements Serializable {
     } else {
       final names = values.map((e) => '\'${e.name}\'').toList();
       throw ExceptionOf<E>(
-          message: 'Json validation error',
-          expectedState: '{$key: any of $names}',
-          invalidState: '$json');
+        message: 'Json validation error',
+        expectedState: '{$key: any of $names}',
+        invalidState: '$json',
+      );
     }
   }
 }

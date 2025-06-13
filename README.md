@@ -46,7 +46,7 @@ The example below shows the enum `AlphabeticOrder`. The generic mixin
 [SerializeByName][SerializeByName] provides the method `toJson`.
 The typedef `Json` is pre-defined and
 represents the type `Map<String, Object?>`.
-The enum factory constructor
+Note that the enum factory constructor
 calls the static method `SerializeByName.fromJson` provided by the mixin:
 
 ```Dart
@@ -63,7 +63,7 @@ enum AlphabeticOrder with SerializeByName<AlphabeticOrder> {
 }
 ```
 
-Note: The generic type parameter of [SerializeByName][SerializeByName]
+The generic type parameter of [SerializeByName][SerializeByName]
 must be specified. It is used to generate the json map
 *key* under which the enum *name* is stored.
 

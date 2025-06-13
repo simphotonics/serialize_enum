@@ -1,6 +1,5 @@
 ## 0.1.2
-- Changed the typedef `Json` from `Map<String, dynamic>`
-  to `Map<String, Object?>`.
+- Changed the typedef `Json`: `Map<String, dynamic>` -> `Map<String, Object?>`.
 - Updated dependencies.
 
 ## 0.1.1

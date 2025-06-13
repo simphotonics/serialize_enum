@@ -91,39 +91,41 @@ AlphabeticOrder.asc
 
 ## Further Serialization Options
 
-To serialize the enum instance by storing its *index* instead of its *name*
+1. To serialize the enum instance by storing its *index* instead of its *name*
 use the mixin [`SerializeByIndex`][SerializeByIndex].
 
-In order to use a *custom* key when serializing an enumeration, [`SerializeByIndex`][SerializeByIndex] or [`SerializeByName`][SerializeByName] may be implemented as an interface
+2. In order to use a *custom* key when serializing an enumeration, [`SerializeByIndex`][SerializeByIndex] or [`SerializeByName`][SerializeByName] may be implemented as an interface
 *instead* of being mixed in:
 
-```Dart
+   ```Dart
 
-import 'package:serialize_enum/serialize_enum.dart';
+   import 'package:serialize_enum/serialize_enum.dart';
 
-enum AlphabeticOrder implements SerializableByName {
-  asc,
-  desc;
+   enum AlphabeticOrder implements SerializableByName {
+     asc,
+     desc;
 
-  /// Key used to serialize the enum.
-  static const key = 'customKey';
+     /// Key used to serialize the enum.
+     static const key = 'customKey';
 
-  @override
-  Json toJson() => {key: name};
+     @override
+     Json toJson() => {key: name};
 
-  /// instance of `AlphabeticOrder`.
-  factory AlphabeticOrder.fromJson(Json json) =>
-      SerializableByNameCustomKey.fromJson(
-        json: json,
-        values: values,
-        key: key,
-      );
-}
-```
-Note that the factory constructor above calls the
-static method `SerializeByNameCustomKey`.
+     /// instance of `AlphabeticOrder`.
+     factory AlphabeticOrder.fromJson(Json json) =>
+         SerializableByNameCustomKey.fromJson(
+           json: json,
+           values: values,
+           key: key,
+         );
+   }
+   ```
+   Note that the factory constructor above calls the
+   static method `SerializeByNameCustomKey`.
 
-For benchmark scores see folder [`benchmark`][benchmark].
+## Benchmark
+
+For benchmark scores please visist the folder [`benchmark`][benchmark].
 
 ## Features and bugs
 

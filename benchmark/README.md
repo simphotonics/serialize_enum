@@ -84,6 +84,8 @@ enum AlphabeticOrder implements SerializeByIndex {
 Running the benchmarks produced the following console output:
 ```python
 $ dart run benchmark_runner report
+Building package executable...
+Built benchmark_runner:benchmark_runner.
 
 Finding benchmark files in benchmark ...
   benchmark/serialize_by_name_benchmark.dart
@@ -92,55 +94,55 @@ Finding benchmark files in benchmark ...
   benchmark/serialize_by_name_custom_key_benchmark.dart
 
 $ dart benchmark/serialize_by_index_custom_key_benchmark.dart
-  [048ms:331us] AlphabeticOrder with custom key: serialize by index
-    mean: 0.28 ± 0.20 us, median: 0.22 ± 0.038 us
-    _▄▉▇▂▁____________  105  _____
-    sample size: 174 (averaged over 207 runs)
+  [048ms:091us] AlphabeticOrder with custom key: serialize by index
+    mean: 0.39 ± 0.91 us, median: 0.23 ± 0.044 us
+    _▉▅▄█▁____________  468  _____
+    sample size: 184 (averaged over 224 runs)
 
-  [014ms:806us] AlphabeticOrder with custom key: deserialize by index
-    mean: 0.052 ± 0.0084 us, median: 0.051 ± 0.0030 us
-    _______▁▂▄▄▆▉▂____________  59  _____
-    sample size: 200 (averaged over 249 runs)
-
-
-$ dart benchmark/serialize_by_name_benchmark.dart
-  [057ms:039us] AlphabeticOrder with mixin: serialize by name
-    mean: 0.32 ± 0.19 us, median: 0.27 ± 0.048 us
-    _▉▉▇▃▂____________  75  _____
-    sample size: 161 (averaged over 188 runs)
-
-  [042ms:403us] AlphabeticOrder with mixin: deserialize by name
-    mean: 0.48 ± 1.28 us, median: 0.28 ± 0.15 us
-    ▃▉▃▂▂▁____________  221  _____
-    sample size: 185 (averaged over 226 runs)
-
-
-$ dart benchmark/serialize_by_index_benchmark.dart
-  [067ms:606us] AlphabeticOrder with mixin: serialize by index
-    mean: 0.51 ± 0.99 us, median: 0.29 ± 0.27 us
-    ▉▃_▄▁___________  82  _____
-    sample size: 157 (averaged over 182 runs)
-
-  [032ms:915us] AlphabeticOrder with mixin: deserialize by index
-    mean: 0.16 ± 0.57 us, median: 0.11 ± 0.035 us
-    _▃▉█▄▃_▃▂__________  589  _____
-    sample size: 177 (averaged over 212 runs)
+  [038ms:355us] AlphabeticOrder with custom key: deserialize by index
+    mean: 0.40 ± 1.76 us, median: 0.11 ± 0.025 us
+    ▂▄____▂▇▉▄▁_____________  1877  _____
+    sample size: 184 (averaged over 223 runs)
 
 
 $ dart benchmark/serialize_by_name_custom_key_benchmark.dart
-  [047ms:877us] AlphabeticOrder with custom key: serialize by name
-    mean: 0.35 ± 0.79 us, median: 0.23 ± 0.025 us
-    __▄▂▃▉▃▁_▁▁_________  873  _____
-    sample size: 174 (averaged over 208 runs)
+  [050ms:182us] AlphabeticOrder with custom key: serialize by name
+    mean: 0.27 ± 0.36 us, median: 0.22 ± 0.0085 us
+    ______▁▁_▁▉▂________▁____  1512  _____
+    sample size: 175 (averaged over 209 runs)
 
-  [057ms:666us] AlphabeticOrder with custom key: deserialize by name
-    mean: 0.51 ± 1.29 us, median: 0.41 ± 0.16 us
-    ▁▂▉▃█▉▂___________  251  _____
-    sample size: 156 (averaged over 179 runs)
+  [057ms:221us] AlphabeticOrder with custom key: deserialize by name
+    mean: 0.52 ± 1.77 us, median: 0.24 ± 0.24 us
+    ▉█▃▅▂___________  162  _____
+    sample size: 157 (averaged over 181 runs)
+
+
+$ dart benchmark/serialize_by_index_benchmark.dart
+  [063ms:199us] AlphabeticOrder with mixin: serialize by index
+    mean: 0.54 ± 1.70 us, median: 0.27 ± 0.18 us
+    ▉▂_▂_____________  222  _____
+    sample size: 161 (averaged over 188 runs)
+
+  [020ms:273us] AlphabeticOrder with mixin: deserialize by index
+    mean: 0.100 ± 0.012 us, median: 0.098 ± 0.0040 us
+    _______▄▁▁▉▆▃▂____________  55  _____
+    sample size: 195 (averaged over 241 runs)
+
+
+$ dart benchmark/serialize_by_name_benchmark.dart
+  [059ms:219us] AlphabeticOrder with mixin: serialize by name
+    mean: 0.47 ± 1.51 us, median: 0.27 ± 0.057 us
+    ▂▉▂▄▂____________  705  _____
+    sample size: 167 (averaged over 197 runs)
+
+  [046ms:922us] AlphabeticOrder with mixin: deserialize by name
+    mean: 0.21 ± 0.19 us, median: 0.13 ± 0.068 us
+    ▉__▂____________________________________
+    sample size: 159 (averaged over 184 runs)
 
 
 -------      Summary     --------
-Total run time: [02s:412ms]
+Total run time: [02s:649ms]
 Completed benchmarks: 8.
 Completed successfully.
 Exiting with code: 0.
